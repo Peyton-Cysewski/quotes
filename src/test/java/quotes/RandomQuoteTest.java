@@ -7,6 +7,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class RandomQuoteTest {
-    @Test public void testAppHasAGreeting() {
+    @Test public void testCanGetQuote() {
+        Quote quote = RandomQuote.FindQuote();
+        System.out.println(quote.toString());
+        assertNotNull(quote);
+        assertNotNull(quote.getAuthor());
+        assertNotNull(quote.getText());
     }
 }
