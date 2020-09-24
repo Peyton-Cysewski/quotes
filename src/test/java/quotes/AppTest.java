@@ -6,9 +6,9 @@ package quotes;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class RandomQuoteTest {
+public class AppTest {
     @Test public void testCanGetQuote() {
-        Quote quote = RandomQuote.FindQuote();
+        Quote quote = App.FindQuote();
         System.out.println(quote.toString());
         assertNotNull(quote);
         assertNotNull(quote.getAuthor());

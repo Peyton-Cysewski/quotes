@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RandomQuote {
+public class App {
     public static void main(String[] args) {
         System.out.println(FindQuote().toString());
     }
