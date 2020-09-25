@@ -2,20 +2,26 @@ package quotes;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class App {
     public static void main(String[] args) {
         try {
-            System.out.println(GetSwansonQuote());
+            Quote quote = GetSwansonQuote();
+            AddQuoteToLocal(quote);
+            System.out.println(quote);
         }
         catch (Exception e) {
             System.out.println("The internet quote wasn't working, so we pulled a locally stored quote instead.");
-//        System.out.println(FindQuoteLocal().toString());
+        System.out.println(GetLocalQuote().toString());
         }
     }
 
@@ -82,5 +88,13 @@ public class App {
         String author = "Ron Swanson";
         Quote result = new Quote(text, author);
         return result;
+    }
+
+    public static void AddQuoteToLocal(Quote quote) throws IOException {
+        Gson gson = new Gson();
+        FileWriter wr = new FileWriter("src/main/resources/test.json", true);
+        JsonWriter jwr = new JsonWriter(wr);
+        gson.toJson(quote, Quote.class, jwr);
+        wr.close();
     }
 }
