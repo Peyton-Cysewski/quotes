@@ -4,14 +4,25 @@
 package quotes;
 
 import org.junit.Test;
+
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void testCanGetQuote() {
-        Quote quote = App.FindQuote();
+    @Test public void testCanGetLocalQuote() {
+        Quote quote = App.GetLocalQuote();
         System.out.println(quote.toString());
         assertNotNull(quote);
         assertNotNull(quote.getAuthor());
+        assertNotNull(quote.getText());
+    }
+
+    @Test public void testCanGetSwansonQuote() throws IOException {
+        Quote quote = App.GetSwansonQuote();
+        System.out.println(quote.toString());
+        assertNotNull(quote);
+        assertEquals("Ron Swanson", quote.getAuthor());
         assertNotNull(quote.getText());
     }
 }
